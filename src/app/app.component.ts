@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { HeroComponent } from './components/hero/hero.component';
@@ -16,6 +17,7 @@ import { ContactComponent } from './components/contact/contact.component';
   standalone: true,
   imports: [
     CommonModule,
+    HomeComponent,
     HeaderComponent,
     FooterComponent,
     HeroComponent,

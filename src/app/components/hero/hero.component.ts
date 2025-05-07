@@ -1,65 +1,88 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-hero',
+  standalone: true,
+  imports: [CommonModule],
   template: `
-    <section class="hero" id="home">
+    <section class="hero">
       <div class="hero-content">
         <h1>Transforme sua presença digital</h1>
-        <p>Somos especialistas em criar identidade visual e conteúdo que conecta sua empresa ao seu público</p>
-        <button class="cta-button">Fale Conosco</button>
+        <p>Design, desenvolvimento e marketing digital para impulsionar seu negócio</p>
+        <button class="cta-button">Comece Agora</button>
       </div>
+      <div class="hero-overlay"></div>
     </section>
   `,
   styles: [`
     .hero {
-      min-height: 100vh;
-      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                  url('/assets/images/hero-bg.jpg') center/cover no-repeat;
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      background-image: url('/assets/images/hero-bg.jpg');
+      background-size: cover;
+      background-position: center;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       color: white;
-      padding: 2rem;
+      overflow: hidden;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(0,0,0,0.8), rgba(0,0,0,0.4));
+      z-index: 1;
     }
 
     .hero-content {
+      position: relative;
+      z-index: 2;
       max-width: 800px;
-    }
+      padding: 0 var(--spacing-xl);
+      animation: fadeIn 1s ease-out;
 
-    .hero-content h1 {
-      font-size: 3.5rem;
-      margin-bottom: 1.5rem;
-      animation: fadeInUp 1s ease;
-    }
+      h1 {
+        font-size: 4rem;
+        margin-bottom: var(--spacing-lg);
+        line-height: 1.2;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      }
 
-    .hero-content p {
-      font-size: 1.5rem;
-      margin-bottom: 2rem;
-      opacity: 0.9;
-      animation: fadeInUp 1s ease 0.2s;
-      animation-fill-mode: both;
+      p {
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-xl);
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+      }
     }
 
     .cta-button {
       background-color: var(--primary-color);
       color: white;
-      border: none;
-      padding: 1rem 2rem;
+      padding: 1rem 2.5rem;
       font-size: 1.2rem;
-      border-radius: 4px;
+      border: none;
+      border-radius: var(--border-radius-lg);
       cursor: pointer;
-      transition: background-color 0.3s ease;
-      animation: fadeInUp 1s ease 0.4s;
-      animation-fill-mode: both;
+      transition: var(--transition-fast);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: bold;
 
       &:hover {
-        background-color: var(--primary-color-dark);
+        background-color: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
       }
     }
 
-    @keyframes fadeInUp {
+    @keyframes fadeIn {
       from {
         opacity: 0;
         transform: translateY(20px);
@@ -71,12 +94,14 @@ import { Component } from '@angular/core';
     }
 
     @media (max-width: 768px) {
-      .hero-content h1 {
-        font-size: 2.5rem;
-      }
+      .hero-content {
+        h1 {
+          font-size: 2.5rem;
+        }
 
-      .hero-content p {
-        font-size: 1.2rem;
+        p {
+          font-size: 1.2rem;
+        }
       }
     }
   `]
