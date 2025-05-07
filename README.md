@@ -1,59 +1,98 @@
-# ShPort
+# SH-Port - Portfólio Profissional
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.11.
+![SH-Port Preview](src/assets/images/preview.png)
 
-## Development server
+## 📋 Sobre o Projeto
 
-To start a local development server, run:
+SH-Port é um portfólio profissional moderno e responsivo, desenvolvido com Angular e TypeScript. O projeto apresenta uma interface elegante e intuitiva, destacando serviços, trabalhos e habilidades profissionais.
 
+## ✨ Funcionalidades
+
+- **Design Responsivo**: Interface adaptável para todos os dispositivos
+- **Navegação Suave**: Rolagem suave entre seções
+- **Seções Principais**:
+  - Home com hero section impactante
+  - Sobre com informações profissionais
+  - Serviços oferecidos
+  - Galeria de trabalhos
+  - Depoimentos de clientes
+  - Formulário de contato
+
+## 🛠️ Tecnologias Utilizadas
+
+- Angular 17
+- TypeScript
+- SCSS
+- Font Awesome
+- HTML5
+- CSS3
+
+## 🚀 Como Executar
+
+1. Clone o repositório:
+```bash
+git clone https://github.com/seu-usuario/sh-port.git
+```
+
+2. Instale as dependências:
+```bash
+cd sh-port
+npm install
+```
+
+3. Execute o projeto:
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+4. Acesse `http://localhost:4200` no seu navegador
 
-## Code scaffolding
+## 📦 Estrutura do Projeto
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```
+sh-port/
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   │   ├── home/
+│   │   │   ├── about/
+│   │   │   ├── services/
+│   │   │   ├── gallery/
+│   │   │   ├── testimonials/
+│   │   │   └── contact/
+│   │   ├── shared/
+│   │   │   ├── components/
+│   │   │   │   ├── header/
+│   │   │   │   └── footer/
+│   │   │   └── styles/
+│   │   └── assets/
+│   └── styles/
+└── ...
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🎨 Estilos e Componentes
 
-```bash
-ng generate --help
-```
+- **Header**: Navegação responsiva com mudança de cor baseada na seção
+- **Hero Section**: Imagem de fundo com overlay e chamada para ação
+- **Serviços**: Grid 3x2 com cards interativos
+- **Galeria**: Layout responsivo com efeitos de hover
+- **Contato**: Formulário estilizado com validação
 
-## Building
+## 📱 Responsividade
 
-To build the project run:
+- Desktop: Layout completo com grid 3x2
+- Tablet: Grid 2x3 para melhor visualização
+- Mobile: Layout adaptado com uma coluna
 
-```bash
-ng build
-```
+## 📄 Licença
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-## Running unit tests
+## 📞 Contato
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Seu Nome - [@seu_twitter](https://twitter.com/seu_twitter) - email@exemplo.com
 
-```bash
-ng test
-```
+Link do Projeto: [https://github.com/claudiaazambuja/sh-port](https://github.com/claudiaazambuja/sh-port)
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+Desenvolvido com ❤️ por [Claudia]
