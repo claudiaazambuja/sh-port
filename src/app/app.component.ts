@@ -1,13 +1,30 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
+import { HeroComponent } from './components/hero/hero.component';
 import { AboutComponent } from './components/about/about.component';
+import { ServicesComponent } from './components/services/services.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
+import { TestimonialsComponent } from './components/testimonials/testimonials.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, AboutComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    HeaderComponent,
+    FooterComponent,
+    HeroComponent,
+    AboutComponent,
+    ServicesComponent,
+    GalleryComponent,
+    TestimonialsComponent,
+    ContactComponent
+  ]
 })
 export class AppComponent {
   title = 'sh-port';
