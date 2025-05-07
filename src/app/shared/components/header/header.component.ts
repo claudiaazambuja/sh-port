@@ -6,114 +6,113 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <header class="header" [class.header-hidden]="isHeaderHidden">
-      <div class="header-content">
+    <header [class.header-light]="isHomeSection" [class.header-dark]="!isHomeSection">
+      <div class="container">
         <div class="logo">
           <h1>SH-Port</h1>
         </div>
-        <nav class="nav-links">
-          <a href="#inicio">Início</a>
-          <a href="#sobre">Sobre</a>
-          <a href="#servicos">Serviços</a>
-          <a href="#galeria">Galeria</a>
-          <a href="#depoimentos">Depoimentos</a>
-          <a href="#contato">Contato</a>
+        <nav>
+          <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a (click)="scrollToServices()" style="cursor: pointer;">Serviços</a></li>
+            <li><a href="#galeria">Galeria</a></li>
+            <li><a href="#depoimentos">Depoimentos</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
         </nav>
       </div>
     </header>
   `,
   styles: [`
-    .header {
-      background-color: var(--footer-bg);
-      color: var(--footer-text);
-      padding: 1rem 0;
+    header {
       position: fixed;
-      width: 100%;
       top: 0;
+      left: 0;
+      width: 100%;
       z-index: 1000;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
+      transition: all 0.3s ease;
+      padding: 1rem 0;
+
+      &.header-light {
+        background: transparent;
+        
+        .logo h1, nav a {
+          color: white;
+        }
+
+        nav a:hover {
+          color: rgba(255, 255, 255, 0.8);
+        }
+      }
+
+      &.header-dark {
+        background: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        
+        .logo h1, nav a {
+          color: #333;
+        }
+
+        nav a:hover {
+          color: #007bff;
+        }
+      }
     }
 
-    .header-hidden {
-      transform: translateY(-100%);
-    }
-
-    .header-content {
+    .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 1rem;
+      padding: 0 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
     .logo h1 {
-      color: var(--primary-color);
       font-size: 1.8rem;
       font-weight: 700;
+      margin: 0;
+      transition: color 0.3s ease;
     }
 
-    .nav-links {
+    nav ul {
       display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
       gap: 2rem;
+    }
 
-      a {
-        color: var(--footer-link);
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.3s ease;
-        position: relative;
-
-        &:hover {
-          color: var(--footer-link-hover);
-        }
-
-        &::after {
-          content: '';
-          position: absolute;
-          bottom: -5px;
-          left: 0;
-          width: 0;
-          height: 2px;
-          background-color: var(--footer-link-hover);
-          transition: width 0.3s ease;
-        }
-
-        &:hover::after {
-          width: 100%;
-        }
-      }
+    nav a {
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
     }
 
     @media (max-width: 768px) {
-      .nav-links {
+      nav {
         display: none;
       }
     }
   `]
 })
 export class HeaderComponent {
-  private lastScrollTop = 0;
-  isHeaderHidden = false;
+  isHomeSection = true;
 
   @HostListener('window:scroll', ['$event'])
   onScroll() {
-    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-    
-    // Mostrar header no topo da página
-    if (currentScroll <= 0) {
-      this.isHeaderHidden = false;
-      return;
+    const homeSection = document.querySelector('app-home');
+    if (homeSection) {
+      const homeRect = homeSection.getBoundingClientRect();
+      this.isHomeSection = homeRect.bottom > 0;
     }
+  }
 
-    // Esconder header ao rolar para baixo, mostrar ao rolar para cima
-    if (currentScroll > this.lastScrollTop) {
-      this.isHeaderHidden = true;
-    } else {
-      this.isHeaderHidden = false;
+  scrollToServices() {
+    const servicesSection = document.querySelector('app-services');
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: 'smooth' });
     }
-
-    this.lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
   }
 } 

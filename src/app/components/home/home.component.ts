@@ -8,20 +8,20 @@ import { CommonModule } from '@angular/common';
   template: `
     <section class="hero">
       <div class="overlay"></div>
-      <div class="container">
-        <div class="hero-content">
-          <h1>Transforme sua presença digital</h1>
-          <p>Soluções criativas e inovadoras para impulsionar seu negócio</p>
-          <button class="cta-button">Conheça nossos serviços</button>
-        </div>
+      <div class="hero-content">
+        <h1>Transforme sua presença digital</h1>
+        <p>Soluções criativas e inovadoras para impulsionar seu negócio</p>
+        <button class="cta-button" (click)="scrollToServices()">Conheça nossos serviços</button>
       </div>
     </section>
   `,
   styles: [`
     .hero {
       position: relative;
+      width: 100vw;
       height: 100vh;
-      width: 100%;
+      margin: 0;
+      padding: 0;
       background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80');
       background-size: cover;
       background-position: center;
@@ -31,6 +31,7 @@ import { CommonModule } from '@angular/common';
       justify-content: center;
       text-align: center;
       color: white;
+      overflow: hidden;
     }
 
     .overlay {
@@ -45,17 +46,11 @@ import { CommonModule } from '@angular/common';
       );
     }
 
-    .container {
+    .hero-content {
       position: relative;
       z-index: 1;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .hero-content {
       max-width: 800px;
-      margin: 0 auto;
+      padding: 0 20px;
     }
 
     h1 {
@@ -105,4 +100,11 @@ import { CommonModule } from '@angular/common';
     }
   `]
 })
-export class HomeComponent {} 
+export class HomeComponent {
+  scrollToServices() {
+    const servicesSection = document.querySelector('app-services');
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+} 
